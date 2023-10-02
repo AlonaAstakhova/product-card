@@ -1,0 +1,85 @@
+[
+  {
+    "id": 20,
+    "is_on_request": false,
+    "invalid_price": 1000,
+    "valid_price": 1000,
+    "qty": 0,
+    "color": {
+      "id": 4,
+      "value": "Зеленый"
+    },
+    "size": {
+      "id": 6,
+      "value": "M"
+    }
+  },
+  {
+    "id": 17,
+    "is_on_request": false,
+    "valid_price": 1000,
+    "qty": 5,
+    "color": {"id": 1,
+    "value": "Черный"},
+    "size": {"id": 6,
+    "value": "M"}
+  },
+  {
+    "id": 16,
+    "is_on_request": false,
+    "invalid_price": 1000,
+    "valid_price": 1000,
+    "qty": 4,
+    "color": {
+      "id": 4,
+      "value": "Зеленый"
+    },
+    "size": {
+      "id": 5,
+      "value": "S"
+    }
+  },
+  {
+    "id": 15,
+    "is_on_request": false,
+    "invalid_price": 1000,
+    "valid_price": 1000,
+    "qty": 3,
+    "color": {
+      "id": 3,
+      "value": "Белый"
+    },
+    "size": {
+      "id": 5,
+      "value": "S"
+  }
+  },
+  {
+    "id": 14,
+    "is_on_request": true,
+    "invalid_price": 10000,
+    "valid_price": 10000,
+    "qty": 0,
+    "color": {
+      "id": 1,
+      "value": "Черный"
+    },
+    "size": {
+      "id": 5,
+      "value": "S"
+    }
+  },
+  {
+    "id": 13,
+    "invalid_price": 11000,
+    "valid_price": 11000,
+    "qty": 2,
+    "color": {
+      "id": 2,
+      "value": "Синий"
+    },
+    "size": {
+      "id": 5,
+      "value": "S"
+    }
+  }]
