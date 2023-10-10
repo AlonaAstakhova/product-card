@@ -2,12 +2,12 @@
   {
     "id": 20,
     "is_on_request": false,
-    "invalid_price": 1000,
-    "valid_price": 1000,
+    "invalid_price": 350,
+    "valid_price": 450,
     "qty": 0,
     "color": {
       "id": 4,
-      "value": "Зеленый"
+      "value": "Green"
     },
     "size": {
       "id": 6,
@@ -17,22 +17,27 @@
   {
     "id": 17,
     "is_on_request": false,
-    "valid_price": 1000,
+    "invalid_price": 100,
+    "valid_price": 100,
     "qty": 5,
-    "color": {"id": 1,
-    "value": "Черный"},
-    "size": {"id": 6,
-    "value": "M"}
+    "color": {
+      "id": 1,
+      "value": "Black"
+    },
+    "size": {
+      "id": 6,
+      "value": "M"
+    }
   },
   {
     "id": 16,
     "is_on_request": false,
-    "invalid_price": 1000,
-    "valid_price": 1000,
+    "invalid_price": 200,
+    "valid_price": 100,
     "qty": 4,
     "color": {
       "id": 4,
-      "value": "Зеленый"
+      "value": "Green"
     },
     "size": {
       "id": 5,
@@ -42,27 +47,27 @@
   {
     "id": 15,
     "is_on_request": false,
-    "invalid_price": 1000,
-    "valid_price": 1000,
+    "invalid_price": 150,
+    "valid_price": 150,
     "qty": 3,
     "color": {
       "id": 3,
-      "value": "Белый"
+      "value": "White"
     },
     "size": {
       "id": 5,
       "value": "S"
-  }
+    }
   },
   {
     "id": 14,
     "is_on_request": true,
-    "invalid_price": 10000,
-    "valid_price": 10000,
+    "invalid_price": 550,
+    "valid_price": 550,
     "qty": 0,
     "color": {
       "id": 1,
-      "value": "Черный"
+      "value": "Black"
     },
     "size": {
       "id": 5,
@@ -71,15 +76,17 @@
   },
   {
     "id": 13,
-    "invalid_price": 11000,
-    "valid_price": 11000,
+    "is_on_request": true,
+    "invalid_price": 1100,
+    "valid_price": 1100,
     "qty": 2,
     "color": {
       "id": 2,
-      "value": "Синий"
+      "value": "Blue"
     },
     "size": {
       "id": 5,
       "value": "S"
     }
-  }]
+  }
+]

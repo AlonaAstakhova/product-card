@@ -8,18 +8,19 @@ body {
   background-color: rgb(240, 239, 239);
 }
 
-.wrapper {
+.cards {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.card,
-.header {
+.card {
   width: 1140px;
   background-color: white;
   padding: 15px;
+  box-shadow: 0 0 4px 3px gray;
+  margin-top: 30px;
 }
 
 h1 {
@@ -31,12 +32,14 @@ h1 {
 .article {
   color: #a7a7a7;
 }
-.card {
-  display: inline-flex;
-}
 
 hr {
   border-width: 1px;
+}
+
+.data {
+  display: inline-flex;
+  margin-top: 20px;
 }
 
 .form {
@@ -89,6 +92,14 @@ hr {
   margin: 0 5px;
 }
 
+.choice-list .active, .color-list .active {
+  color: #02a2d9;
+}
+
+.choice-list .disabled, .color-list .disabled {
+  color: #a7a7a7;
+}
+
 .choice-list .choice {
   width: 32px;
 }
@@ -125,4 +136,15 @@ hr {
 
 .go {
   background-color: #b3cc05;
+}
+
+.info {
+  color: #02a2d9;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.info span {
+  color: #084e7c;
+  font-size: 16px;
 }
