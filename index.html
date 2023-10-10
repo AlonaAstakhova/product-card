@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="index.js"></script>
     <title>Product card</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <h1>Unusual shaped wooden shutter</h1>
+        <span class="article">Article: 1238912</span>
+        <hr />
+      </div>
+      <div class="card">
+        <img class="photo" src="images/shutter.png" alt="shutter" />
+        <div class="form">
+          <p class="price-before">$ 450</p>
+          <h2 class="price">$ 350</h2>
+          <p class="description">Best protection from the hot sun!</p>
+          <p class="instock">In stock</p>
+          <div class="choice-list">
+            <span>Size:</span>
+            <button class="choice">s</button>
+            <button class="choice">m</button>
+            <button class="choice">l</button>
+            <button class="choice">xl</button>
+          </div>
+          <div class="color-list">
+            <span>Color:</span>
+            <button class="choice">black</button>
+            <button class="choice">blue</button>
+            <button class="choice">khaki</button>
+            <button class="choice">green</button>
+          </div>
+          <button class="add-to-cart">add to cart</button>
+          <div class="btn-scd">
+            <button class="add">add</button>
+            <button class="go">go to cart</button>
+          </div>
+          <p class="info">
+            delivery information:<span class="info-data">1-2 days</span>
+          </p>
+          <p class="info">
+            payment method:<span class="info-data"
+              >by credit card on the website or in cash upon receipt of the
+              goods</span
+            >
+          </p>
+          <p class="info">
+            exchange and return:<span class="info-data">14 days</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
