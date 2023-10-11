@@ -1,3 +1,22 @@
+let stock = document.querySelector('.instock')
+// console.log(stock)
+
+function stockFoo(qty) {
+  if (qty === 0) {
+    // stock.style.backgroundColor = 'red'
+  }
+}
+
+function choice_color(p) {
+  let colors = document.querySelectorAll('.choice_color')
+  colors.forEach((cl) => {
+    console.log(1)
+    if (p === cl) {
+      return (cl.className = cl.classList.add(' active'))
+    }
+  })
+}
+
 fetch('./data.json')
   .then((results) => results.json())
   .then((data) => {
@@ -7,6 +26,9 @@ fetch('./data.json')
       if (el.invalid_price !== el.valid_price) {
         invalid_price = '$ ' + el.invalid_price
       }
+
+      stockFoo(el.qty)
+      choice_color(el.color.value)
 
       values += ` <div class="card">
           <div class="header">
@@ -20,20 +42,20 @@ fetch('./data.json')
               <p class="price-before" id="invalid_price">${invalid_price}</p>
               <h2 class="price" id="valid_price">${'$ ' + el.valid_price}</h2>
               <p class="description">Best protection from the hot sun!</p>
-              <p class="instock">In stock</p>
+              <p class="instock" style="background-color: #b3cc05" id="instock">In stock</p>
               <div class="choice-list">
                 <span>Size:</span>
-                <button class="choice active">s</button>
-                <button class="choice">m</button>
-                <button class="choice">l</button>
-                <button class="choice">xl</button>
+                <button class="choice_size active">s</button>
+                <button class="choice_size">m</button>
+                <button class="choice_size">l</button>
+                <button class="choice_size">xl</button>
               </div>
               <div class="color-list">
                 <span>Color:</span>
-                <button class="choice disabled">black</button>
-                <button class="choice">blue</button>
-                <button class="choice">khaki</button>
-                <button class="choice">green</button>
+                <button class="choice_color disabled" id='black'>black</button>
+                <button class="choice_color" id='blue'>blue</button>
+                <button class="choice_color" id='khaki'>khaki</button>
+                <button class="choice_color" id='green'>green</button>
               </div>
               <button class="add-to-cart">add to cart</button>
               <div class="btn-scd">

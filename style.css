@@ -83,7 +83,8 @@ hr {
   margin-right: 5px;
 }
 
-.choice {
+.choice_size,
+.choice_color {
   border: none;
   text-transform: uppercase;
   font-size: 16px;
@@ -92,15 +93,22 @@ hr {
   margin: 0 5px;
 }
 
-.choice-list .active, .color-list .active {
+.choice_size:hover,
+.choice_color:hover {
+  transform: scale(1.1);
+}
+
+.choice-list .active,
+.color-list .active {
   color: #02a2d9;
 }
 
-.choice-list .disabled, .color-list .disabled {
+.choice-list .disabled,
+.color-list .disabled {
   color: #a7a7a7;
 }
 
-.choice-list .choice {
+.choice-list .choice_size {
   width: 32px;
 }
 
@@ -125,6 +133,11 @@ hr {
   background-color: #02a2d9;
 }
 
+.add-to-cart:hover,
+.add:hover {
+  background-color: #084e7c;
+}
+
 .add-to-cart {
   width: 100%;
 }
@@ -138,6 +151,9 @@ hr {
   background-color: #b3cc05;
 }
 
+.go:hover {
+  background-color: #037333;
+}
 .info {
   color: #02a2d9;
   font-weight: 600;
