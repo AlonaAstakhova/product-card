@@ -62,9 +62,9 @@
   {
     "id": 14,
     "is_on_request": true,
-    "invalid_price": 550,
+    "invalid_price": 650,
     "valid_price": 550,
-    "qty": 0,
+    "qty": 1,
     "color": {
       "id": 1,
       "value": "Black"

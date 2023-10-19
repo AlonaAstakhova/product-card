@@ -9,12 +9,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <script defer src="index.js"></script>
     <title>Product card</title>
   </head>
   <body>
-    <div class="cards" id="cards">
-      <div class="card">
+    <div class="cards">
+      <div class="card" data-id="">
         <div class="header">
           <h1>Unusual shaped wooden shutter</h1>
           <span class="article">Article: 1238912</span>
@@ -23,8 +22,8 @@
         <div class="data">
           <img class="photo" src="images/shutter.png" alt="shutter" />
           <div class="form">
-            <p class="price-before" id="invalid_price">$ 450</p>
-            <h2 class="price" id="valid_price">$ 350</h2>
+            <p class="price-before" id="invalid_price"></p>
+            <h2 class="price" id="valid_price"></h2>
             <p class="description">Best protection from the hot sun!</p>
             <p class="instock">In stock</p>
             <div class="sizes" data-js="size">
@@ -55,5 +54,6 @@
         </div>
       </div>
     </div>
+    <script defer src="index.js"></script>
   </body>
 </html>

@@ -1,110 +1,83 @@
 fetch('./data.json')
   .then((results) => results.json())
   .then((data) => {
-    let arrSize = []
-    let arrColor = []
+    let sizeList = []
+    let colorList = []
+    let firstColor = ''
+    const prices = {}
 
+    //Формируем списки всех существующих размеров и цветов
+    //ЗАДАНИЕ:
+    //обработать условия если размеры и цвета не доступен к заказу
+    //переписать список размеров и цветов на Set
     data.forEach((el) => {
       const size = el.size.value
       const color = el.color.value
-      if (!arrSize.includes(size)) {
-        arrSize = [...arrSize, el.size.value]
+
+      if (!sizeList.includes(size)) {
+        sizeList = [...sizeList, el.size.value]
       }
-      if (!arrColor.includes(color)) {
-        arrColor = [...arrColor, el.color.value]
+      if (!colorList.includes(color)) {
+        colorList = [...colorList, el.color.value]
       }
     })
 
-    function sizeList(arrSize, elSize) {
-      const sizeMap = {
-        XS: 1,
-        S: 2,
-        M: 3,
-        L: 4,
-        XL: 5,
-      }
-      // debugger
-      arrSize
-        .sort((a, b) => sizeMap[a] - sizeMap[b])
-        .forEach((size) => {
-          const button = document.createElement('button')
-          button.className = 'size'
-          button.textContent = size
-          // console.log(elSize.size.value)
-          //   if (elSize.size.value == undefined) {
-          //     button.className += ' active'
-          //   }
-          const divSize = document.querySelector("[data-js='size']")
-          divSize.append(button)
-        })
+    //Сортируем размеры от XS к XL создаем и выводим кнопки
+    const sizeMap = {
+      XS: 1,
+      S: 2,
+      M: 3,
+      L: 4,
+      XL: 5,
     }
 
-    function colorList(arrColor) {
-      arrColor.forEach((color) => {
+    sizeList
+      .sort((a, b) => sizeMap[a] - sizeMap[b])
+      .forEach((size) => {
         const button = document.createElement('button')
-        button.className = 'color'
-        button.textContent = color
-        // button.className += ' active'
-        // button.className += ' disabled'
-        const divSize = document.querySelector("[data-js='color']")
+        button.className = 'size'
+        button.textContent = size
+        button.setAttribute('data-value', size)
+        const divSize = document.querySelector("[data-js='size']")
         divSize.append(button)
       })
+
+    // Создаем и выводим кнопки размеров
+    colorList.forEach((color) => {
+      const button = document.createElement('button')
+      button.className = 'color'
+      button.textContent = color
+      button.setAttribute('data-value', color)
+      const divColor = document.querySelector("[data-js='color']")
+      divColor.append(button)
+    })
+
+    //Делаем активной первую существующую кнопку размера
+    const firstSize = sizeList.sort((a, b) => sizeMap[a] - sizeMap[b])[0]
+    const atrSize = `[data-value='${firstSize}']`
+    const divSizes = document.querySelector('.sizes').querySelector(atrSize)
+    divSizes.classList.add('active')
+
+    //находим первый достуный цвет и собираем данные о цене
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].size.value === firstSize && data[i].qty > 0) {
+        firstColor = data[i].color.value
+        prices['validPrice'] = data[i].valid_price
+        prices['inValidPrice'] = data[i].invalid_price
+        break
+      }
     }
 
-    let values = ''
-    data.map((el, i) => {
-      let invalid_price = ''
-      if (el.invalid_price !== el.valid_price) {
-        invalid_price = '$ ' + el.invalid_price
-      }
+    //Делаем активной кнопку цвета, который доступен для первого ующего размера
+    const atrColor = `[data-value='${firstColor}']`
+    const divColors = document.querySelector('.colors').querySelector(atrColor)
+    divColors.classList.add('active')
 
-      values += ` <div class="card">
-                  <div class="header">
-                    <h1>Unusual shaped wooden shutter</h1>
-                    <span class="article">Article: 1238912</span>
-                    <hr />
-                  </div>
-                  <div class="data">
-                    <img class="photo" src="images/shutter.png" alt="shutter" />
-                    <div class="form">
-                      <p class="price-before" id="invalid_price">${invalid_price}</p>
-                      <h2 class="price" id="valid_price">${
-                        '$ ' + el.valid_price
-                      }</h2>
-                      <p class="description">Best protection from the hot sun!</p>
-                      <p class="instock"> In stock </p>
-                      <div class="sizes" >
-                         <span>Size:</span>
-                         ${sizeList(arrSize, el)}
-                      </div>
-                      <div class="colors" >
-                        <span>Color:</span>
-                        ${colorList(arrColor)}
-                      </div>
-                      <button class="add-to-cart">add to cart</button>
-                      <div class="btn-scd">
-                        <button class="add">add</button>
-                        <button class="go">go to cart</button>
-                      </div>
-                      <p class="info">
-                        Delivery information: <span class="info-data">1-2 days</span>
-                      </p>
-                      <p class="info">
-                        Payment method:
-                        <span class="info-data"
-                          >by credit card on the website or in cash upon receipt of the
-                          goods</span
-                        >
-                      </p>
-                      <p class="info">
-                        Exchange and return: <span class="info-data">14 days</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>`
-    })
-    document.getElementById('cards').innerHTML = values
-
-    //     document.querySelector('.instock').style.backgroundColor = 'rgb(255, 0, 0)'
+    //Устанавливаем цену
+    document.querySelector('.price').textContent = '$ ' + prices.validPrice
+    if (prices.validPrice !== prices.inValidPrice) {
+      document.querySelector('.price-before').textContent =
+        '$ ' + prices.inValidPrice
+    }
   })
   .catch((error) => console.log(error))
