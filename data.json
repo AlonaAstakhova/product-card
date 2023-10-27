@@ -4,7 +4,7 @@
     "is_on_request": false,
     "invalid_price": 350,
     "valid_price": 450,
-    "qty": 0,
+    "qty": 1,
     "color": {
       "id": 4,
       "value": "Green"
@@ -56,7 +56,7 @@
     },
     "size": {
       "id": 5,
-      "value": "L"
+      "value": "XL"
     }
   },
   {
@@ -77,8 +77,23 @@
   {
     "id": 13,
     "is_on_request": true,
-    "invalid_price": 1100,
-    "valid_price": 1100,
+    "invalid_price": 110,
+    "valid_price": 110,
+    "qty": 2,
+    "color": {
+      "id": 2,
+      "value": "Blue"
+    },
+    "size": {
+      "id": 5,
+      "value": "L"
+    }
+  },
+  {
+    "id": 13,
+    "is_on_request": true,
+    "invalid_price": 110,
+    "valid_price": 110,
     "qty": 2,
     "color": {
       "id": 2,
@@ -87,6 +102,36 @@
     "size": {
       "id": 5,
       "value": "S"
+    }
+  },
+  {
+    "id": 20,
+    "is_on_request": false,
+    "invalid_price": 350,
+    "valid_price": 450,
+    "qty": 1,
+    "color": {
+      "id": 4,
+      "value": "Khaki"
+    },
+    "size": {
+      "id": 6,
+      "value": "M"
+    }
+  },
+  {
+    "id": 14,
+    "is_on_request": true,
+    "invalid_price": 650,
+    "valid_price": 550,
+    "qty": 1,
+    "color": {
+      "id": 1,
+      "value": "Green"
+    },
+    "size": {
+      "id": 5,
+      "value": "XS"
     }
   }
 ]

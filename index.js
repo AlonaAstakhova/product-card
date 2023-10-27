@@ -3,14 +3,14 @@ fetch('./data.json')
   .then((data) => {
     let sizeList = []
     let colorList = []
+
+    let disColorList = []
     let firstColor = ''
     const prices = {}
 
     //ЗАДАНИЕ:
-    //обработать условия если размеры и цвета не доступен к заказу
     //переписать список размеров и цветов на Set
-    //сделать кнопки disabled
-    
+
     //Формируем списки всех существующих размеров и цветов
 
     data.forEach((el) => {
@@ -45,7 +45,7 @@ fetch('./data.json')
         divSize.append(button)
       })
 
-    // Создаем и выводим кнопки размеров
+    // Создаем и выводим кнопки цветов
     colorList.forEach((color) => {
       const button = document.createElement('button')
       button.className = 'color'
@@ -62,19 +62,53 @@ fetch('./data.json')
     divSizes.classList.add('active')
 
     //находим первый достуный цвет и собираем данные о цене
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].size.value === firstSize && data[i].qty > 0) {
-        firstColor = data[i].color.value
-        prices['validPrice'] = data[i].valid_price
-        prices['inValidPrice'] = data[i].invalid_price
-        break
+    function frColor(data, firstSize) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].size.value === firstSize && data[i].qty > 0) {
+          firstColor = data[i].color.value
+          prices['validPrice'] = data[i].valid_price
+          prices['inValidPrice'] = data[i].invalid_price
+          break
+        }
       }
+
+      //Делаем активной кнопку цвета, который доступен для первого cуществующего размера
+      const atrColor = `[data-value='${firstColor}']`
+      const divColors = document
+        .querySelector('.colors')
+        .querySelector(atrColor)
+      divColors.classList.add('active')
     }
 
-    //Делаем активной кнопку цвета, который доступен для первого ующего размера
-    const atrColor = `[data-value='${firstColor}']`
-    const divColors = document.querySelector('.colors').querySelector(atrColor)
-    divColors.classList.add('active')
+    frColor(data, firstSize)
+
+    //находим и составляем список недоступных цветов для первого cуществующего размера
+    function disabledColor(data, firstSize) {
+      let colorListFirstSize = []
+      data.forEach((el, i) => {
+        if (el.size.value === firstSize && data[i].qty > 0) {
+          if (!colorListFirstSize.includes(el.color.value)) {
+            colorListFirstSize = [...colorListFirstSize, el.color.value]
+            console.log('colorListFirstSize: ' + colorListFirstSize)
+          }
+        }
+        disColorList = colorList.filter(
+          (el) => !colorListFirstSize.includes(el)
+        )
+        console.log('disColorList: ' + disColorList)
+      })
+
+      //Делаем неактивными кнопки цветов, которые недоступны для первого cуществующего размера и устанавливаем "disabled"
+      disColorList.forEach((disColor) => {
+        const atrDisColor = `[data-value='${disColor}']`
+        const divDisColors = document
+          .querySelector('.colors')
+          .querySelector(atrDisColor)
+        divDisColors.classList.add('disabled')
+      })
+    }
+
+    disabledColor(data, firstSize)
 
     //Устанавливаем цену
     document.querySelector('.price').textContent = '$ ' + prices.validPrice
@@ -82,5 +116,39 @@ fetch('./data.json')
       document.querySelector('.price-before').textContent =
         '$ ' + prices.inValidPrice
     }
+
+    //Обработка клика клиента по кнопкам размера
+    const onButton = (event) => {
+      let sizeClick = event.target.dataset.value
+      if (sizeClick) {
+        //снять активный статус с других кнопок, снять статус disabled
+        document.querySelectorAll('.size').forEach((size) => {
+          size.classList.remove('active')
+        })
+        document.querySelectorAll('.color').forEach((color) => {
+          color.classList.remove('disabled')
+          color.classList.remove('active')
+        })
+        //убрать цены
+        document.querySelector('.price-before').textContent = ''
+        document.querySelector('.price').textContent = ''
+        //ставим активный статус на выбраную кнопку
+        document
+          .querySelector(`[data-value='${sizeClick}']`)
+          .classList.add('active')
+        //на втором наборе опций проверяем какие опции доступны и на недоступные ставим disabled
+        disabledColor(data, sizeClick)
+        //находим первую доступную опцию во втором ряду и делаем ее активной
+        frColor(data, sizeClick)
+        //показываем цены для выбранного размера и цвета
+      }
+      console.log(event)
+
+      //та же самая логика, но если клиент выбирает цвет
+    }
+    document
+      .querySelector("[data-js='size']")
+      .addEventListener('click', onButton)
   })
+
   .catch((error) => console.log(error))
