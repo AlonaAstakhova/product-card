@@ -2,8 +2,8 @@
   {
     "id": 20,
     "is_on_request": false,
-    "invalid_price": 350,
-    "valid_price": 450,
+    "invalid_price": 450,
+    "valid_price": 350,
     "qty": 1,
     "color": {
       "id": 4,
@@ -67,7 +67,7 @@
     "qty": 1,
     "color": {
       "id": 1,
-      "value": "Black"
+      "value": "Green"
     },
     "size": {
       "id": 5,
@@ -107,8 +107,8 @@
   {
     "id": 20,
     "is_on_request": false,
-    "invalid_price": 350,
-    "valid_price": 450,
+    "invalid_price": 400,
+    "valid_price": 350,
     "qty": 1,
     "color": {
       "id": 4,
@@ -127,7 +127,7 @@
     "qty": 1,
     "color": {
       "id": 1,
-      "value": "Green"
+      "value": "Black"
     },
     "size": {
       "id": 5,

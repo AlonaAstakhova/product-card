@@ -108,6 +108,13 @@ hr {
   color: #a7a7a7;
 }
 
+.size.disabled:hover,
+.color.disabled:hover,
+.size.active:hover,
+.color.active:hover {
+  transform: scale(1);
+}
+
 .sizes .size {
   width: 32px;
 }
