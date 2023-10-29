@@ -109,17 +109,16 @@ fetch('./data.json')
     //Устанавливаем цену
     function price() {
       document.querySelector('.price').textContent = '$ ' + prices.validPrice
-
+      document.querySelector('.price-before').textContent =
+        '$ ' + prices.inValidPrice
       if (prices.validPrice !== prices.inValidPrice) {
-        document.querySelector('.price-before').textContent =
-          '$ ' + prices.inValidPrice
+        document.querySelector('.price-before').style.color = 'rgb(167,167,167)'
+        document.querySelector('.price-before').style.textDecoration =
+          'line-through rgb(88,88,88)'
+      } else {
+        document.querySelector('.price-before').style.color = 'rgb(255,255,255)'
+        document.querySelector('.price-before').style.textDecoration = 'none'
       }
-      // else {
-      // document.querySelector('.price-before').textContent =
-      //   '$ ' + prices.inValidPrice
-      // document.querySelector('.price-before').style.color = 'rgb(255,255,255)'
-      // document.querySelector('.price-before').style.textDecoration = 'none'
-      // }
     }
 
     price()
