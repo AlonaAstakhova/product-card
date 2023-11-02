@@ -6,6 +6,7 @@ fetch('./data.json')
     let disColorList = []
     let firstColor = ''
     const prices = {}
+    let productId = null
 
     //ЗАДАНИЕ:
     //переписать список размеров и цветов на Set
@@ -60,10 +61,12 @@ fetch('./data.json')
     divSizes.classList.add('active')
 
     //находим первый достуный цвет и собираем данные о цене
-    function frColor(data, firstSize) {
+    function setFirstColor(data, firstSize) {
       for (let i = 0; i < data.length; i++) {
         if (data[i].size.value === firstSize && data[i].qty > 0) {
           firstColor = data[i].color.value
+          //запомиаем ID активного продукта
+          productId = data[i].id
           prices['validPrice'] = data[i].valid_price
           prices['inValidPrice'] = data[i].invalid_price
           break
@@ -78,7 +81,7 @@ fetch('./data.json')
       divColors.classList.add('active')
     }
 
-    frColor(data, firstSize)
+    setFirstColor(data, firstSize)
 
     //находим и составляем список недоступных цветов для первого cуществующего размера
     function disabledColor(data, firstSize) {
@@ -145,7 +148,7 @@ fetch('./data.json')
         //на втором наборе опций проверяем какие опции доступны и на недоступные ставим disabled
         disabledColor(data, sizeClick)
         //находим первую доступную опцию во втором ряду и делаем ее активной
-        frColor(data, sizeClick)
+        setFirstColor(data, sizeClick)
         //показываем цены для выбранного размера и цвета
         price()
       }
@@ -154,7 +157,7 @@ fetch('./data.json')
       .querySelector("[data-js='size']")
       .addEventListener('click', onButtonSize)
 
-    //Обработка клика клиента по кнопкам размера
+    //Обработка клика клиента по кнопкам цвета
     const onButtonColor = (event) => {
       let colorClick = event.target.dataset.value
       if (colorClick) {
@@ -186,6 +189,7 @@ fetch('./data.json')
               ) {
                 prices['validPrice'] = el.valid_price
                 prices['inValidPrice'] = el.invalid_price
+                productId = el.id
               }
             })
           }
@@ -197,6 +201,13 @@ fetch('./data.json')
     document
       .querySelector("[data-js='color']")
       .addEventListener('click', onButtonColor)
+
+    document
+      .querySelector('.add-to-cart')
+      .addEventListener('click', (event) => {
+        localStorage.setItem('product', productId)
+        alert(localStorage.getItem('product'))
+      })
   })
 
   .catch((error) => console.log(error))
